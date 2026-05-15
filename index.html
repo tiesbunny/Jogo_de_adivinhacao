@@ -73,17 +73,31 @@
     
     <script>
 
-        function verificarPalpite(){
+        let numeroSecreto = Math.floor(Math.random() * 100);
 
-        console.log();
+         function verificarPalpite(){
             //----------------------------
-            //1º verficar se o jogador digitou
-            //   algum numero na caixa de texto
-            //----------------------------
-            let caixaDeTexto = .getElementById(`TXTPalpite`);
-            let chuteDoJogador = caixaDeTexto.value;
+            // 1º Verificar se o jogador digitou 
+            //    algum numero na caixa de texto
+            //-----------------------------
+            let caixaDeTexto = document.getElementById('TXTPalpite');
+            let dvMensagem = document.getElementById('DIVMensagem');
+
+            let chuteDoJogador = parseInt(caixaDeTexto.value);
+
+            //Validação do número digitado. O campo não pode ser vazio e o número deve estar entre 0 e 100
+            if( isNaN(chuteDoJogador) || chuteDoJogador < 1 ||  chuteDoJogador > 100){
+                dvMensagem.textContent = 'Porfavor, insira um número válido entre 1 e 100';
+                return;
+            }
             
-        }
+            if(chuteDoJogador === numeroSecreto){
+                dvMensagem.textContent = 'Parabéns! você acertou o numero secreto '+numeroSecreto;
+            }else{
+                dvMensagem.textContent = 'Errou!';
+            }
+        
+         }
 
     </script>
 
